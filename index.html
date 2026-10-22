@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دعوة زفاف محمد وسارة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light dark;
+  --bg:#17241f; --bg2:#22352d; --gold:#d2ad66; --blush:#f1ddd2; --ink:#f7efe8;
+  --serif:'Aref Ruqaa','Amiri','Traditional Arabic',serif;
+  --sans:'Tajawal','Segoe UI',Tahoma,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:var(--sans)}
+body{background:radial-gradient(120% 80% at 50% 0%,var(--bg2),var(--bg) 70%)}
+.stage{position:relative;height:100%;max-width:520px;margin:auto;overflow:hidden}
+.page{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:36px 32px 90px;opacity:0;pointer-events:none;
+  transform:translateX(-9%);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.page.past{transform:translateX(9%)}
+.page.active{opacity:1;transform:none;pointer-events:auto}
+.frame{position:absolute;inset:14px;border:1px solid rgba(210,173,102,.45);border-radius:200px 200px 18px 18px;pointer-events:none}
+.frame::after{content:"";position:absolute;inset:6px;border:1px solid rgba(210,173,102,.2);border-radius:194px 194px 12px 12px}
+.small{font-size:15px;font-weight:300;letter-spacing:.02em;color:var(--blush);opacity:.9;line-height:2}
+h1,h2{font-family:var(--serif);font-weight:700;color:var(--gold);line-height:1.4}
+.names{font-size:clamp(54px,17vw,84px);margin:6px 0}
+.amp{display:block;font-size:.45em;color:var(--blush);font-weight:400;line-height:1}
+.line{width:120px;height:14px;margin:14px auto}
+.line path{stroke:var(--gold);fill:none;stroke-width:1.2;stroke-dasharray:140;stroke-dashoffset:140}
+.active .line path{animation:draw 1.6s .6s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+/* cover: the one signature moment — ink-like name reveal */
+.reveal{display:inline-block;opacity:0;filter:blur(14px);letter-spacing:.3em}
+.active .reveal{animation:ink 1.9s cubic-bezier(.2,.7,.2,1) forwards}
+.active .reveal.b{animation-delay:.9s}
+@keyframes ink{60%{opacity:.8}to{opacity:1;filter:blur(0);letter-spacing:0}}
+.fade{opacity:0}
+.active .fade{animation:fade 1.2s ease forwards;animation-delay:var(--d,.3s)}
+@keyframes fade{to{opacity:1}}
+h2{font-size:34px;margin-bottom:14px}
+.verse{font-family:var(--serif);font-size:24px;line-height:2.1;color:var(--blush);max-width:320px}
+.date{display:flex;flex-direction:column;gap:2px;align-items:center;justify-content:center;margin:6px 0 4px}
+.date b{font-family:var(--serif);font-size:110px;color:var(--gold);line-height:1.1;font-weight:700}
+.date div{text-align:center;font-family:var(--sans);font-weight:500;color:var(--gold);line-height:1.6}
+.date .m{display:block;font-size:30px}
+.date .d{display:block;font-size:23px}
+.date .t{display:block;font-size:21px;margin-top:4px}
+.count{display:flex;gap:8px;margin-top:22px;direction:rtl}
+.count div{min-width:62px;padding:12px 4px;border:1px solid rgba(210,173,102,.4);border-radius:14px}
+.count strong{display:block;font-family:var(--serif);font-size:28px;color:var(--gold)}
+.count span{font-size:13px;color:var(--blush);font-weight:300}
+.note{margin-top:22px;max-width:300px;padding-top:14px;border-top:1px solid rgba(210,173,102,.3);font-size:14.5px;font-weight:300;line-height:1.9;color:var(--blush)}
+.btns{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;justify-content:center}
+.btn{font:500 16px var(--sans);padding:12px 22px;border-radius:999px;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;text-decoration:none;transition:background .25s,color .25s}
+.btn.fill,.btn:hover{background:var(--gold);color:var(--bg)}
+.btn:focus-visible,.nav button:focus-visible{outline:2px solid var(--blush);outline-offset:3px}
+#thanks{margin-top:18px;min-height:30px;font-family:var(--serif);font-size:22px;color:var(--blush)}
+.nav{position:absolute;bottom:calc(26px + env(safe-area-inset-bottom,0px));left:0;right:0;display:flex;align-items:center;justify-content:center;gap:18px;z-index:5}
+.nav button{width:42px;height:42px;border-radius:50%;border:1px solid rgba(210,173,102,.6);background:transparent;color:var(--gold);font-size:18px;cursor:pointer}
+.nav button:disabled{opacity:.25;cursor:default}
+.dots{display:flex;gap:8px}
+.dots i{width:7px;height:7px;border-radius:50%;background:rgba(210,173,102,.3);transition:all .4s}
+.dots i.on{background:var(--gold);width:22px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01s!important;animation-delay:0s!important;transition-duration:.01s!important}
+}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="frame"></div>
+
+  <!-- 1 الغلاف -->
+  <section class="page active">
+    <p class="small fade" style="--d:.2s">بسم الله الرحمن الرحيم</p>
+    <svg class="line" viewBox="0 0 120 14"><path d="M2 7 H48 M72 7 H118 M60 2 L66 7 L60 12 L54 7 Z"/></svg>
+    <h1 class="names">
+      <span class="reveal">محمد</span>
+      <span class="amp fade" style="--d:1.2s">&amp;</span>
+      <span class="reveal b">سارة</span>
+    </h1>
+    <p class="small fade" style="--d:2.4s">يتشرفان بدعوتكم لحضور حفل زفافهما</p>
+    <p class="small fade" style="--d:3.2s;margin-top:26px;opacity:.6">اسحب أو اضغط السهم للمتابعة</p>
+  </section>
+
+  <!-- 2 الآية والأهل -->
+  <section class="page past">
+    <p class="verse fade">«وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً»</p>
+    <svg class="line" viewBox="0 0 120 14"><path d="M2 7 H48 M72 7 H118 M60 2 L66 7 L60 12 L54 7 Z"/></svg>
+    <p class="small fade" style="--d:.9s">يتشرف أبو أسامة وإخوان العروس وأهلها<br>بدعوتكم لمشاركتهم فرحة زفاف<br>محمد وسارة</p>
+  </section>
+
+  <!-- 3 الموعد -->
+  <section class="page past">
+    <h2>موعد الفرحة</h2>
+    <div class="date fade" style="--d:.3s">
+      <b>٣١</b>
+      <div><span class="m">تشرين الأول ٢٠٢٦</span><span class="d">السبت الموافق ٣١-١٠-٢٠٢٦</span><span class="t">من الساعة ٨:٣٠ حتى ١١:٠٠ مساءً</span></div>
+    </div>
+    <div class="count fade" style="--d:.8s" aria-label="العد التنازلي">
+      <div><strong id="cd">٠</strong><span>يوم</span></div>
+      <div><strong id="ch">٠</strong><span>ساعة</span></div>
+      <div><strong id="cm">٠</strong><span>دقيقة</span></div>
+      <div><strong id="cs">٠</strong><span>ثانية</span></div>
+    </div>
+    <p class="note fade" style="--d:1.3s">حفاظًا على خصوصية الضيفات، نرجو التكرّم بعدم التصوير نهائيًا داخل قاعة النساء.<br>شاكرين لكم تفهّمكم وتعاونكم</p>
+  </section>
+
+  <!-- 4 المكان والرد -->
+  <section class="page past">
+    <h2>المكان</h2>
+    <p class="small fade" style="--d:.3s;font-size:19px">صالة سما المملكة<br>مدينة الشرق، خلف مجمع السوداني</p>
+    <div class="btns fade" style="--d:.6s">
+      <a class="btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/c9hSDwrchQ1f8cmc9">افتح الموقع على الخريطة</a>
+    </div>
+    <svg class="line" viewBox="0 0 120 14" style="margin-top:30px"><path d="M2 7 H48 M72 7 H118 M60 2 L66 7 L60 12 L54 7 Z"/></svg>
+    <p class="small fade" style="--d:1s">هل ستشرفوننا بحضوركم؟</p>
+    <div class="btns fade" style="--d:1.2s">
+      <button class="btn fill" data-r="yes">سأحضر بإذن الله</button>
+      <button class="btn" data-r="no">أعتذر عن الحضور</button>
+    </div>
+    <p id="thanks" aria-live="polite"></p>
+  </section>
+
+  <div class="nav">
+    <button id="next" aria-label="التالي">›</button>
+    <div class="dots" id="dots"></div>
+    <button id="prev" aria-label="السابق">‹</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var pages=[].slice.call(document.querySelectorAll('.page')),i=0,dots=document.getElementById('dots');
+  pages.forEach(function(){dots.appendChild(document.createElement('i'))});
+  function go(n){
+    if(n<0||n>=pages.length)return;
+    i=n;
+    pages.forEach(function(p,k){
+      p.classList.toggle('active',k===i);
+      p.classList.toggle('past',k<i);
+    });
+    [].forEach.call(dots.children,function(d,k){d.classList.toggle('on',k===i)});
+    document.getElementById('prev').disabled=i===0;
+    document.getElementById('next').disabled=i===pages.length-1;
+  }
+  document.getElementById('next').onclick=function(){go(i+1)};
+  document.getElementById('prev').onclick=function(){go(i-1)};
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowLeft')go(i+1);
+    if(e.key==='ArrowRight')go(i-1);
+  });
+  var sx=null;
+  document.getElementById('stage').addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  document.getElementById('stage').addEventListener('touchend',function(e){
+    if(sx===null)return;
+    var dx=e.changedTouches[0].clientX-sx;sx=null;
+    if(Math.abs(dx)>50)go(dx>0?i+1:i-1);
+  });
+  go(0);
+
+  // العد التنازلي
+  var target=new Date(2026,9,31,20,30,0);
+  var ar=function(n){return String(n).replace(/\d/g,function(d){return '٠١٢٣٤٥٦٧٨٩'[d]})};
+  function tick(){
+    var s=Math.max(0,Math.floor((target-new Date())/1000));
+    document.getElementById('cd').textContent=ar(Math.floor(s/86400));
+    document.getElementById('ch').textContent=ar(Math.floor(s%86400/3600));
+    document.getElementById('cm').textContent=ar(Math.floor(s%3600/60));
+    document.getElementById('cs').textContent=ar(s%60);
+  }
+  tick();setInterval(tick,1000);
+
+  // الرد
+  [].forEach.call(document.querySelectorAll('[data-r]'),function(b){
+    b.onclick=function(){
+      document.getElementById('thanks').textContent=b.dataset.r==='yes'?'يسعدنا حضوركم، بانتظاركم':'شكرًا لكم، نقدّر مشاعركم الطيبة';
+    };
+  });
+})();
+</script>
+</body>
+</html>
